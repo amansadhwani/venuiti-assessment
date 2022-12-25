@@ -22,7 +22,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test --transformIgnorePatterns node_modules/(?!my-library-dir)/",
     "eject": "react-scripts eject",
-    "coverage":"jest --coverage"
+    "coverage":"-- --coverage"
   },
   "eslintConfig": {
     "extends": [

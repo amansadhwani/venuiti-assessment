@@ -2,7 +2,7 @@ import React, { useState, createContext, useContext, useEffect } from "react";
 import { SORT_TYPE } from "../constants/constants";
 import { getUsers } from "../services/api/user-service";
 
-const AllUsers = createContext();
+export const AllUsers = createContext();
 
 const UsersContext = ({ children }) => {
   const [loading, setLoading] = useState(false);

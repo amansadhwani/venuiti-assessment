@@ -49,6 +49,7 @@ export const AddUserModal = () => {
           className="btn btn-primary btn-sm add-modal-btn"
           data-toggle="modal"
           data-target="#myModal"
+          data-testid="add-user"
         >
           Add User
         </button>
@@ -107,6 +108,7 @@ export const AddUserModal = () => {
                 onClick={() => onClickAddUser()}
                 type="submit"
                 className={`btn btn-primary ${disableSubmit && "disabled"}`}
+                data-testid="submit-add-user"
               >
                 Submit
               </button>
@@ -115,6 +117,7 @@ export const AddUserModal = () => {
                 className="btn btn-danger"
                 data-dismiss="modal"
                 ref={closeRef}
+                data-testid="close-add-user"
               >
                 Close
               </button>
