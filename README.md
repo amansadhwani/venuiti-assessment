@@ -1,9 +1,9 @@
 
 
-#Live Link 
+# Live Link 
 https://venuiti-assessement.netlify.app/
 
-#Steps to run on local
+# Steps to run on local
 
 1)Clone this repo  
 2)Do `npm i` to install depedencies  
