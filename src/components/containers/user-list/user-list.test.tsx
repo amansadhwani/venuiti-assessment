@@ -1,22 +1,34 @@
 /* eslint-disable testing-library/no-node-access */
 import { fireEvent, render, screen } from "@testing-library/react";
 import { AllUsers } from "../../../store/user-store";
-import { Data } from "../../../__mocks__/users.mock";
+
 import { UserList } from "./user-list";
 
 const removeUser = jest.fn();
 const sortName = jest.fn();
 
+const Data = [
+  {
+    postId: 9,
+    id: 41,
+    name: "voluptas deleniti ut",
+    email: "Lucio@gladys.tv",
+    body: "facere repudiandae vitae ea aut sed quo ut et\nfacere nihil ut voluptates in\nsaepe cupiditate accusantium numquam dolores\ninventore sint mollitia provident",
+  },
+  {
+    postId: 9,
+    id: 42,
+    name: "nam qui et",
+    email: "Shemar@ewell.name",
+    body: "aut culpa quaerat veritatis eos debitis\naut repellat eius explicabo et\nofficiis quo sint at magni ratione et iure\nincidunt quo sequi quia dolorum beatae qui",
+  },
+];
+
 const mockValues = {
   users: Data,
-  setUsers: jest.fn(),
-  loading: false,
   currentData: 10,
-  setCurrentData: jest.fn(),
   nameSort: "AES",
-  setNameSort: jest.fn(),
   emailSort: "AES",
-  setEmailSort: jest.fn(),
 };
 
 describe("User list component", () => {
@@ -28,7 +40,7 @@ describe("User list component", () => {
     );
 
     const userList = screen.queryAllByTestId(/user-list-data/);
-    expect(userList).toHaveLength(7);
+    expect(userList).toHaveLength(2);
   });
 
   test("Should delete user when clicked on delete icon", () => {
