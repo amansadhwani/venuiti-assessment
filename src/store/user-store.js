@@ -1,5 +1,6 @@
 import React, { useState, createContext, useContext, useEffect } from "react";
-import axios from "axios";
+import { SORT_TYPE } from "../constants/constants";
+import { getUsers } from "../services/api/user-service";
 
 const AllUsers = createContext();
 
@@ -7,16 +8,12 @@ const UsersContext = ({ children }) => {
   const [loading, setLoading] = useState(false);
   const [currentData, setCurrentData] = useState(10);
   const [users, setUsers] = useState([]);
-  const [nameSort, setNameSort] = useState("AES");
-  const [emailSort, setEmailSort] = useState("AES");
+  const [nameSort, setNameSort] = useState(SORT_TYPE.AES);
+  const [emailSort, setEmailSort] = useState(SORT_TYPE.AES);
 
   useEffect(() => {
     setLoading(true);
-    axios
-      .get(`${process.env.REACT_APP_API_URL}/comments`)
-      .then(function (response) {
-        setUsers(response.data);
-      });
+    getUsers().then((resp) => setUsers(resp.data));
     setLoading(false);
   }, []);
 

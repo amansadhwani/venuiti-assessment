@@ -1,5 +1,6 @@
 import React, { FC } from "react";
-import { UsersState } from "../../../store/user";
+import { SORT_TYPE } from "../../../constants/constants";
+import { UsersState } from "../../../store/user-store";
 import { TUsers, TUserProps } from "../../../types/user.type";
 import "./user-list.css";
 
@@ -17,7 +18,10 @@ export const UserList: FC<TUserProps> = ({ removeUser, sortName }) => {
               <span
                 className="fa fa-sort"
                 onClick={() =>
-                  sortName(nameSort === "AES" ? "DEC" : "AES", "name")
+                  sortName(
+                    nameSort === SORT_TYPE.AES ? SORT_TYPE.DEC : SORT_TYPE.AES,
+                    "name"
+                  )
                 }
               ></span>
             </th>
@@ -26,7 +30,10 @@ export const UserList: FC<TUserProps> = ({ removeUser, sortName }) => {
               <span
                 className="fa fa-sort"
                 onClick={() =>
-                  sortName(emailSort === "AES" ? "DEC" : "AES", "email")
+                  sortName(
+                    emailSort === SORT_TYPE.AES ? SORT_TYPE.DEC : SORT_TYPE.AES,
+                    "email"
+                  )
                 }
               ></span>
             </th>

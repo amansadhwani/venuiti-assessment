@@ -1,3 +1,4 @@
+import { SORT_TYPE } from "../constants/constants";
 import { TUsers } from "../types/user.type";
 
 export const sortAZZA = (
@@ -5,7 +6,7 @@ export const sortAZZA = (
   sortData: TUsers[],
   sortProperty: string
 ) => {
-  if (sortType === "AES") {
+  if (sortType === SORT_TYPE.AES) {
     return sortData.sort((p1: any, p2: any) =>
       p1[sortProperty] > p2[sortProperty]
         ? 1
@@ -25,9 +26,9 @@ export const sortAZZA = (
 };
 
 export const showToaster = () => {
-  let x: any = document.getElementById("toast");
-  x.className = "show";
+  let element: HTMLElement = document.getElementById("toast");
+  element.className = "show";
   setTimeout(function () {
-    x.className = x.className.replace("show", "");
+    element.className = element.className.replace("show", "");
   }, 3000);
 };

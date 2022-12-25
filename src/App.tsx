@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect } from "react";
 import { UserList } from "./components/containers/user-list/user-list";
-import { UsersState } from "./store/user";
+import { UsersState } from "./store/user-store";
 import { AddUserModal } from "./components/add-user-modal/add-user-modal";
 import { TUsers } from "./types/user.type";
 import { showToaster, sortAZZA } from "./helpers/helpers";
@@ -46,6 +46,7 @@ function App() {
 
   return (
     <>
+      <h1>AMAN</h1>
       <UserList removeUser={removeUser} sortName={onClickSortName} />
       <AddUserModal />
       <Toaster message={"Action performed sucessfully"} />

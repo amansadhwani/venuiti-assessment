@@ -7,8 +7,8 @@ export type TUsers = {
 };
 
 export type TUserProps = {
-  removeUser: any;
-  sortName: any;
+  removeUser: (id: number | string) => void;
+  sortName: (sortType: string, sortProperty: string) => void;
 };
 
 export type TNotification = {

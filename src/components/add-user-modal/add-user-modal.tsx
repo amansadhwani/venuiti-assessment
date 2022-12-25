@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import { showToaster } from "../../helpers/helpers";
-import { UsersState } from "../../store/user";
+import { UsersState } from "../../store/user-store";
 import { TUsers } from "../../types/user.type";
 import "./add-user-modal.css";
 
@@ -8,13 +8,13 @@ export const AddUserModal = () => {
   const [disableSubmit, setDisableSubmit] = useState<boolean>(true);
   const { setUsers } = UsersState();
   const closeRef = useRef<any>();
-  const name = useRef<any>("");
-  const email = useRef<any>("");
-  const body = useRef<any>("");
+  const name = useRef<any>();
+  const email = useRef<any>();
+  const body = useRef<any>();
 
   const handleChange = (): void => {
     const isDisabled =
-      !name.current.value || !email.current.value || !body.current.value;
+      !name?.current?.value || !email.current.value || !body.current.value;
     if (isDisabled !== disableSubmit) {
       setDisableSubmit(isDisabled);
     }
@@ -29,14 +29,14 @@ export const AddUserModal = () => {
   };
 
   const onClickAddUser = (): void => {
-    const perpareData = {
+    const newUserData = {
       postId: 1,
       id: Math.random(),
       name: name.current.value,
       email: email.current.value,
       body: body.current.value,
     };
-    setUsers((prevData: TUsers[]) => [...prevData, perpareData]);
+    setUsers((prevData: TUsers[]) => [...prevData, newUserData]);
     showToaster();
     performCleanUp();
   };
