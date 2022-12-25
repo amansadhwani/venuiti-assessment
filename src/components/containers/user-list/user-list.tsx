@@ -10,7 +10,7 @@ export const UserList: FC<TUserProps> = ({ removeUser, sortName }) => {
   return (
     <>
       <div id="infinite-main-item-div" className="infinite-main-item-div">
-        <table>
+        <table data-testid="user-list-table">
           <tr>
             <th>User ID</th>
             <th>

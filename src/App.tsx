@@ -46,7 +46,6 @@ function App() {
 
   return (
     <>
-      <h1>AMAN</h1>
       <UserList removeUser={removeUser} sortName={onClickSortName} />
       <AddUserModal />
       <Toaster message={"Action performed sucessfully"} />
