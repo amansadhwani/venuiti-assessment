@@ -7,11 +7,9 @@ export const InifinteScroll: FC<TInfiniteScroll> = ({
   children,
   divID,
 }) => {
-  const onScroll = useCallback((e: any) => {
-    if (
-      e.target.scrollTop + e.target.clientHeight + 1 >=
-      e.target.scrollHeight
-    ) {
+  const onScroll: EventListener = useCallback((e: Event): void => {
+    const target = e.target as HTMLElement;
+    if (target.scrollTop + target.clientHeight + 1 >= target.scrollHeight) {
       loadMore();
     }
   }, []);

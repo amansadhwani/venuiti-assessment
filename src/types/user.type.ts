@@ -22,13 +22,3 @@ export type TInfiniteScroll = {
   children: React.ReactNode;
   divID: string;
 };
-
-export enum ABC {
-  name,
-  email,
-}
-
-export type name = string;
-export type email = string;
-
-export type HELLO = name | email;

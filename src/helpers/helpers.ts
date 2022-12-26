@@ -7,18 +7,18 @@ export const sortAZZA = (
   sortProperty: string
 ) => {
   if (sortType === SORT_TYPE.AES) {
-    return sortData.sort((p1: any, p2: any) =>
-      p1[sortProperty] > p2[sortProperty]
+    return sortData.sort((p1: TUsers, p2: TUsers) =>
+      p1[sortProperty as keyof TUsers] > p2[sortProperty as keyof TUsers]
         ? 1
-        : p1[sortProperty] < p2[sortProperty]
+        : p1[sortProperty as keyof TUsers] < p2[sortProperty as keyof TUsers]
         ? -1
         : 0
     );
   } else {
-    return sortData.sort((p1: any, p2: any) =>
-      p1[sortProperty] > p2[sortProperty]
+    return sortData.sort((p1: TUsers, p2: TUsers) =>
+      p1[sortProperty as keyof TUsers] > p2[sortProperty as keyof TUsers]
         ? -1
-        : p1[sortProperty] < p2[sortProperty]
+        : p1[sortProperty as keyof TUsers] < p2[sortProperty as keyof TUsers]
         ? 1
         : 0
     );

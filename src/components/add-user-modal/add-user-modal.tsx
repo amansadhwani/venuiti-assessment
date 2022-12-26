@@ -1,4 +1,5 @@
 import React, { useRef, useState } from "react";
+import { emailRegex } from "../../constants/constants";
 import { showToaster } from "../../helpers/helpers";
 import { UsersState } from "../../store/user-store";
 import { TUsers } from "../../types/user.type";
@@ -14,14 +15,16 @@ export const AddUserModal = () => {
 
   const handleChange = (): void => {
     const isDisabled =
-      !name?.current?.value || !email.current.value || !body.current.value;
+      !name?.current?.value ||
+      !email.current.value ||
+      !emailRegex.test(email.current.value) ||
+      !body.current.value;
     if (isDisabled !== disableSubmit) {
       setDisableSubmit(isDisabled);
     }
   };
 
   const performCleanUp = () => {
-    closeRef.current.click();
     name.current.value = "";
     email.current.value = "";
     body.current.value = "";
@@ -38,7 +41,7 @@ export const AddUserModal = () => {
     };
     setUsers((prevData: TUsers[]) => [...prevData, newUserData]);
     showToaster();
-    performCleanUp();
+    closeRef.current.click();
   };
 
   return (
@@ -50,6 +53,7 @@ export const AddUserModal = () => {
           data-toggle="modal"
           data-target="#myModal"
           data-testid="add-user"
+          onClick={performCleanUp}
         >
           Add User
         </button>
