@@ -7,10 +7,10 @@ import "./add-user-modal.css";
 export const AddUserModal = () => {
   const [disableSubmit, setDisableSubmit] = useState<boolean>(true);
   const { setUsers } = UsersState();
-  const closeRef = useRef<any>();
-  const name = useRef<any>();
-  const email = useRef<any>();
-  const body = useRef<any>();
+  const closeRef = useRef<HTMLButtonElement>();
+  const name = useRef<HTMLInputElement>();
+  const email = useRef<HTMLInputElement>();
+  const body = useRef<HTMLInputElement>();
 
   const handleChange = (): void => {
     const isDisabled =

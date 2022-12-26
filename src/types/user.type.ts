@@ -1,3 +1,5 @@
+import React from "react";
+
 export type TUsers = {
   postId: number;
   id: number | string;
@@ -14,3 +16,19 @@ export type TUserProps = {
 export type TNotification = {
   message: string;
 };
+
+export type TInfiniteScroll = {
+  loadMore: () => void;
+  children: React.ReactNode;
+  divID: string;
+};
+
+export enum ABC {
+  name,
+  email,
+}
+
+export type name = string;
+export type email = string;
+
+export type HELLO = name | email;

@@ -1,12 +1,10 @@
-/* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect } from "react";
 import { UserList } from "./components/containers/user-list/user-list";
 import { UsersState } from "./store/user-store";
 import { AddUserModal } from "./components/add-user-modal/add-user-modal";
 import { TUsers } from "./types/user.type";
 import { showToaster, sortAZZA } from "./helpers/helpers";
 import Toaster from "./components/toaster/toaster";
-import "./App.css";
+import { InifinteScroll } from "./components/infinite-scroll/infinite-scroll";
 
 function App() {
   const { users, setUsers, setCurrentData, setNameSort, setEmailSort } =
@@ -20,19 +18,6 @@ function App() {
   const loadMore = () => {
     setCurrentData((prevData: number) => prevData + 10);
   };
-  const onScroll = (e: any): void => {
-    if (
-      e.target.scrollTop + e.target.clientHeight + 1 >=
-      e.target.scrollHeight
-    ) {
-      loadMore();
-    }
-  };
-  useEffect(() => {
-    let infiniteID: any = document.getElementById("infinite-main-item-div");
-    infiniteID.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
 
   const onClickSortName = (sortType: string, sortProperty: string) => {
     const sortedData = sortAZZA(sortType, users, sortProperty);
@@ -46,7 +31,9 @@ function App() {
 
   return (
     <>
-      <UserList removeUser={removeUser} sortName={onClickSortName} />
+      <InifinteScroll loadMore={loadMore} divID={"infinite-main-item-div"}>
+        <UserList removeUser={removeUser} sortName={onClickSortName} />
+      </InifinteScroll>
       <AddUserModal />
       <Toaster message={"Action performed sucessfully"} />
     </>
