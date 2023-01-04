@@ -1,10 +1,19 @@
 import React, { useState, createContext, useContext, useEffect } from "react";
 import { SORT_TYPE } from "../constants/constants";
 import { getUsers } from "../services/api/user-service";
+import { TChildren, TUserContext } from "../types/user.type";
 
-export const AllUsers = createContext();
+const defaultState = {
+  loading: false,
+  currentData: 10,
+  users: [{}],
+  nameSort: SORT_TYPE.AES,
+  emailSort: SORT_TYPE.AES,
+};
 
-const UsersContext = ({ children }) => {
+export const AllUsers = createContext<TUserContext>(defaultState);
+
+const UsersContext = ({ children }: TChildren) => {
   const [loading, setLoading] = useState(false);
   const [currentData, setCurrentData] = useState(10);
   const [users, setUsers] = useState([]);

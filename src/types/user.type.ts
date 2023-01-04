@@ -22,3 +22,31 @@ export type TInfiniteScroll = {
   children: React.ReactNode;
   divID: string;
 };
+
+// export enum TSortType {
+//  AES="AES",
+//  DEC="DEC"
+// }
+
+export type ButtonStatus = 'AES' | 'DEC';
+
+
+
+export type TUserContext = {
+  loading:boolean;
+  setLoading?: () => void;
+  currentData:number;
+  setCurrentData?:any
+  users:TUsers[] | any
+  setUsers?:any
+  nameSort:string
+  setNameSort?:  any
+  emailSort:string;
+  setEmailSort?:any
+}
+
+export type TChildren = {
+  children: React.ReactNode;
+}
+
+
