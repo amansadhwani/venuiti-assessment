@@ -5,10 +5,17 @@ import { TUsers } from "./types/user.type";
 import { showToaster, sortAZZA } from "./helpers/helpers";
 import Toaster from "./components/toaster/toaster";
 import { InifinteScroll } from "./components/infinite-scroll/infinite-scroll";
+import Loader from "./components/loader/loader";
 
 function App() {
-  const { users, setUsers, setCurrentData, setNameSort, setEmailSort } =
-    UsersState();
+  const {
+    users,
+    setUsers,
+    setCurrentData,
+    setNameSort,
+    setEmailSort,
+    loading,
+  } = UsersState();
   const removeUser = (id: string | number) => {
     const filterUser = users.filter((item: TUsers) => item.id !== id);
     setUsers(filterUser);
@@ -31,9 +38,13 @@ function App() {
 
   return (
     <>
-      <InifinteScroll loadMore={loadMore} divID={"infinite-main-item-div"}>
-        <UserList removeUser={removeUser} sortName={onClickSortName} />
-      </InifinteScroll>
+      {loading ? (
+        <Loader />
+      ) : (
+        <InifinteScroll loadMore={loadMore} divID={"infinite-main-item-div"}>
+          <UserList removeUser={removeUser} sortName={onClickSortName} />
+        </InifinteScroll>
+      )}
       <AddUserModal />
       <Toaster message={"Action performed sucessfully"} />
     </>
