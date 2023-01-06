@@ -14,14 +14,13 @@ const defaultState = {
 export const AllUsers = createContext<TUserContext>(defaultState);
 
 const UsersContext = ({ children }: TChildren) => {
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [currentData, setCurrentData] = useState(10);
   const [users, setUsers] = useState([]);
   const [nameSort, setNameSort] = useState(SORT_TYPE.AES);
   const [emailSort, setEmailSort] = useState(SORT_TYPE.AES);
 
   useEffect(() => {
-    setLoading(true);
     getUsers().then((resp) => setUsers(resp.data));
     setLoading(false);
   }, []);
